@@ -1,27 +1,27 @@
-package Models;
+package com.example.practica.Models;
 
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Orders")
-public class Orders{
+public class order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderID;
+    private Long orderID;
     @ManyToOne
     @JoinColumn(name = "CustomerID")
 
-    private Customer customerID;
-    private int ticketCategoryID;
+    private customer customerID;
+    private Long ticketCategoryID;
     private String orderAt;
     private int numberOfTickets;
     private int totalPrice;
 
-    public Orders() {
+    public order() {
     }
 
-    public Orders(int orderID, Customer customerID, int ticketCategoryID, String orderAt, int numberOfTickets, int totalPrice) {
+    public order(Long orderID, customer customerID, Long ticketCategoryID, String orderAt, int numberOfTickets, int totalPrice) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.ticketCategoryID = ticketCategoryID;
@@ -30,27 +30,27 @@ public class Orders{
         this.totalPrice = totalPrice;
     }
 
-    public int getOrderID() {
+    public Long getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(Long orderID) {
         this.orderID = orderID;
     }
 
-    public Customer getCustomerID() {
+    public customer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(Customer customerID) {
+    public void setCustomerID(customer customerID) {
         this.customerID = customerID;
     }
 
-    public int getTicketCategoryID() {
+    public Long getTicketCategoryID() {
         return ticketCategoryID;
     }
 
-    public void setTicketCategoryID(int ticketCategoryID) {
+    public void setTicketCategoryID(Long ticketCategoryID) {
         this.ticketCategoryID = ticketCategoryID;
     }
 

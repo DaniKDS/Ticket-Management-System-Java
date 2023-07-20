@@ -1,4 +1,4 @@
-package Models;
+package com.example.practica.Models;
 
 import jakarta.persistence.*;
 
@@ -6,40 +6,40 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "TicketCategory")
-public class TicketCategory implements Serializable {
+public class ticketCategory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ticketCategoryID;
+    private Long ticketCategoryID;
 
     @ManyToOne
-    private Event eventID;
+    private event eventID;
     private String description;
     private int price;
 
-    public TicketCategory() {
+    public ticketCategory() {
     }
 
-    public TicketCategory(int ticketCategoryID, Event eventID, String description, int price) {
+    public ticketCategory(Long ticketCategoryID, event eventID, String description, int price) {
         this.ticketCategoryID = ticketCategoryID;
         this.eventID = eventID;
         this.description = description;
         this.price = price;
     }
 
-    public int getTicketCategoryID() {
+    public Long getTicketCategoryID() {
         return ticketCategoryID;
     }
 
-    public void setTicketCategoryID(int ticketCategoryID) {
+    public void setTicketCategoryID(Long ticketCategoryID) {
         this.ticketCategoryID = ticketCategoryID;
     }
 
-    public Event getEventID() {
+    public event getEventID() {
         return eventID;
     }
 
-    public void setEventID(Event eventID) {
+    public void setEventID(event eventID) {
         this.eventID = eventID;
     }
 

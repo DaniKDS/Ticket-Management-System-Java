@@ -1,4 +1,4 @@
-package Models;
+package com.example.practica.Models;
 
 import jakarta.persistence.*;
 
@@ -6,30 +6,30 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Venue")
-public class Venue implements Serializable {
+public class venue implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int venueID;
+    private Long venueID;
     private String location;
     private String type;
     private int capacity;
 
-    public Venue() {
+    public venue() {
     }
 
-    public Venue(int venueID, String location, String type, int capacity) {
+    public venue(Long venueID, String location, String type, int capacity) {
         this.venueID = venueID;
         this.location = location;
         this.type = type;
         this.capacity = capacity;
     }
 
-    public int getVenueID() {
+    public Long getVenueID() {
         return venueID;
     }
 
-    public void setVenueID(int venueID) {
+    public void setVenueID(Long venueID) {
         this.venueID = venueID;
     }
 

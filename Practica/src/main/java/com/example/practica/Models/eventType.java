@@ -1,4 +1,4 @@
-package Models;
+package com.example.practica.Models;
 
 import jakarta.persistence.*;
 
@@ -6,26 +6,26 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "EventType")
-public class EventType implements Serializable {
+public class eventType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int eventTypeId;
+    private Long eventTypeId;
     private String eventTypeName;
 
-    public EventType() {
+    public eventType() {
     }
 
-    public EventType(int eventTypeId, String eventTypeName) {
+    public eventType(Long eventTypeId, String eventTypeName) {
         this.eventTypeId = eventTypeId;
         this.eventTypeName = eventTypeName;
     }
 
-    public int getEventTypeId() {
+    public Long getEventTypeId() {
         return eventTypeId;
     }
 
-    public void setEventTypeId(int eventTypeId) {
+    public void setEventTypeId(Long eventTypeId) {
         this.eventTypeId = eventTypeId;
     }
 

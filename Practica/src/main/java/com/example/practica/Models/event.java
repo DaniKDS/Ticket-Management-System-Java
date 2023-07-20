@@ -1,29 +1,28 @@
-package Models;
+package com.example.practica.Models;
 
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "Event")
-public class Event implements Serializable {
+public class event implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int eventid;
+    private Long eventid;
     @ManyToOne
-    private Venue venueId;
+    private venue venueId;
     @OneToOne
-    private EventType eventlypeId;
+    private eventType eventlypeId;
     private String eventName;
     private String startDate;
     private String endDate;
 
-    public Event() {
+    public event() {
     }
 
-public Event(int eventid, Venue venueId, EventType eventlypeId, String eventName, String startDate, String endDate) {
+public event(Long eventid, venue venueId, eventType eventlypeId, String eventName, String startDate, String endDate) {
         this.eventid = eventid;
         this.venueId = venueId;
         this.eventlypeId = eventlypeId;
@@ -32,27 +31,27 @@ public Event(int eventid, Venue venueId, EventType eventlypeId, String eventName
         this.endDate = endDate;
     }
 
-    public int getEventid() {
+    public Long getEventid() {
         return eventid;
     }
 
-    public void setEventid(int eventid) {
+    public void setEventid(Long eventid) {
         this.eventid = eventid;
     }
 
-    public Venue getVenueId() {
+    public venue getVenueId() {
         return venueId;
     }
 
-    public void setVenueId(Venue venueId) {
+    public void setVenueId(venue venueId) {
         this.venueId = venueId;
     }
 
-    public EventType getEventlypeId() {
+    public eventType getEventlypeId() {
         return eventlypeId;
     }
 
-    public void setEventlypeId(EventType eventlypeId) {
+    public void setEventlypeId(eventType eventlypeId) {
         this.eventlypeId = eventlypeId;
     }
 
