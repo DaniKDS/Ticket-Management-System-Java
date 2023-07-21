@@ -1,4 +1,4 @@
-package com.example.practica.Models;
+package com.example.practica.models;
 
 
 import jakarta.persistence.Entity;
@@ -10,17 +10,22 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Customer")
-public class customer implements Serializable {
+public class Customer implements Serializable {
     @Id
+    @Column(name = "CustomerID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CustomerId;
+
+    @Column(name = "CustomerName")
     private String CustomerName;
+
+    @Column(name = "email")
     private String email;
 
-    public customer() {
+    public Customer() {
     }
 
-    public customer(Long CustomerId, String CustomerName, String email) {
+    public Customer(Long CustomerId, String CustomerName, String email) {
         this.CustomerId = CustomerId;
         this.CustomerName = CustomerName;
         this.email = email;

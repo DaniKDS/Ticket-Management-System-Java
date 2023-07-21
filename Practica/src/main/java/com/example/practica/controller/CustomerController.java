@@ -1,22 +1,22 @@
-package com.example.practica.Controller;
+package com.example.practica.controller;
 
-import com.example.practica.Models.customer;
+import com.example.practica.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import com.example.practica.Services.serviceCustomer;
+import com.example.practica.services.ServiceCustomer;
 
     @RestController
     @RequestMapping("/api/v1")
-    public class customerController {
+    public class CustomerController {
 
         @Autowired
-        private serviceCustomer customerService;
+        private ServiceCustomer customerService;
         @GetMapping("/customers")
-        public List<customer> getALlCustomers(){
+        public List<Customer> getALlCustomers(){
             return customerService.getAllCustomers();
         }
     }

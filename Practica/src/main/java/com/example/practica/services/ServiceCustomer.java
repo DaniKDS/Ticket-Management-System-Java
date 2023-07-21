@@ -1,21 +1,21 @@
-package com.example.practica.Services;
+package com.example.practica.services;
 
-import com.example.practica.Models.customer;
-import com.example.practica.Repositories.customerRepository;
+import com.example.practica.models.Customer;
+import com.example.practica.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class serviceCustomer {
-    private customerRepository customerRepository;
+public class ServiceCustomer {
+    private CustomerRepository customerRepository;
     @Autowired
-    public serviceCustomer(customerRepository customerRepository) {
+    public ServiceCustomer(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    public void saveCustomer(customer customer) {
+    public void saveCustomer(Customer customer) {
         customerRepository.save(customer);
     }
 
@@ -23,15 +23,15 @@ public class serviceCustomer {
         customerRepository.deleteById(id);
     }
 
-    public void updateCustomer(customer customer) {
+    public void updateCustomer(Customer customer) {
         customerRepository.save(customer);
     }
 
-    public customer getCustomerById(Long id) {
+    public Customer getCustomerById(Long id) {
         return customerRepository.findById(id).get();
     }
 
-    public List<customer> getAllCustomers() {
+    public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 

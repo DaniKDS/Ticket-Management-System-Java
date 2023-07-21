@@ -1,27 +1,34 @@
-package com.example.practica.Models;
+package com.example.practica.models;
 
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Orders")
-public class order {
+public class Order {
     @Id
+    @Column(name = "OrderID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderID;
     @ManyToOne
     @JoinColumn(name = "CustomerID")
 
-    private customer customerID;
+    private Customer customerID;
+    @Column(name = "ticketCategoryID")
+
     private Long ticketCategoryID;
+    @Column(name = "orderAt")
+
     private String orderAt;
+    @Column(name = "numberOfTickets")
     private int numberOfTickets;
+    @Column(name = "totalPrice")
     private int totalPrice;
 
-    public order() {
+    public Order() {
     }
 
-    public order(Long orderID, customer customerID, Long ticketCategoryID, String orderAt, int numberOfTickets, int totalPrice) {
+    public Order(Long orderID, Customer customerID, Long ticketCategoryID, String orderAt, int numberOfTickets, int totalPrice) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.ticketCategoryID = ticketCategoryID;
@@ -38,11 +45,11 @@ public class order {
         this.orderID = orderID;
     }
 
-    public customer getCustomerID() {
+    public Customer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(customer customerID) {
+    public void setCustomerID(Customer customerID) {
         this.customerID = customerID;
     }
 

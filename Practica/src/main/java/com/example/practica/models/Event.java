@@ -1,4 +1,4 @@
-package com.example.practica.Models;
+package com.example.practica.models;
 
 
 import jakarta.persistence.*;
@@ -7,25 +7,30 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Event")
-public class event implements Serializable {
+public class Event implements Serializable {
     @Id
+    @Column(name = "eventiD")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventid;
     @ManyToOne
-    private venue venueId;
-    @OneToOne
-    private eventType eventlypeId;
+    @JoinColumn(name = "venueID")
+    private Venue venueId;
+    @ManyToOne
+    @JoinColumn(name = "eventTypeID")
+    private EventType eventType;
+    @Column(name = "eventName")
     private String eventName;
+    @Column(name = "startDate")
     private String startDate;
+    @Column(name = "endDate")
     private String endDate;
-
-    public event() {
+    public Event() {
     }
 
-public event(Long eventid, venue venueId, eventType eventlypeId, String eventName, String startDate, String endDate) {
+public Event(Long eventid, Venue venueId, EventType eventlypeId, String eventName, String startDate, String endDate) {
         this.eventid = eventid;
         this.venueId = venueId;
-        this.eventlypeId = eventlypeId;
+        this.eventType = eventlypeId;
         this.eventName = eventName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -39,20 +44,20 @@ public event(Long eventid, venue venueId, eventType eventlypeId, String eventNam
         this.eventid = eventid;
     }
 
-    public venue getVenueId() {
+    public Venue getVenueId() {
         return venueId;
     }
 
-    public void setVenueId(venue venueId) {
+    public void setVenueId(Venue venueId) {
         this.venueId = venueId;
     }
 
-    public eventType getEventlypeId() {
-        return eventlypeId;
+    public EventType getEventType() {
+        return eventType;
     }
 
-    public void setEventlypeId(eventType eventlypeId) {
-        this.eventlypeId = eventlypeId;
+    public void setEventType(EventType eventlypeId) {
+        this.eventType = eventlypeId;
     }
 
     public String getEventName() {
