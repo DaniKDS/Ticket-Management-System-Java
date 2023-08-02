@@ -9,15 +9,15 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "customer")
 public class Customer implements Serializable {
-    @Id
-    @Column(name = "CustomerID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CustomerId;
 
-    @Column(name = "CustomerName")
-    private String CustomerName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long customerId;
+
+    @Column(name = "customer_name")
+    private String customerName;
 
     @Column(name = "email")
     private String email;
@@ -25,26 +25,20 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-    public Customer(Long CustomerId, String CustomerName, String email) {
-        this.CustomerId = CustomerId;
-        this.CustomerName = CustomerName;
-        this.email = email;
-    }
-
     public Long getCustomerId() {
-        return CustomerId;
+        return customerId;
     }
 
-    public void setCustomerId(Long CustomerId) {
-        this.CustomerId = CustomerId;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public String getCustomerName() {
-        return CustomerName;
+        return customerName;
     }
 
-    public void setCustomerName(String CustomerName) {
-        this.CustomerName = CustomerName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getEmail() {
@@ -57,11 +51,10 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Customer{CustomerId=").append(CustomerId);
-        sb.append(", CustomerName=").append(CustomerName);
-        sb.append(", email=").append(email);
-        sb.append('}');
-        return sb.toString();
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

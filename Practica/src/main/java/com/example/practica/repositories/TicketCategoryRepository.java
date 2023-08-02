@@ -1,8 +1,10 @@
 package com.example.practica.repositories;
 
-
 import com.example.practica.models.TicketCategory;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TicketCategoryRepository extends JpaRepository<TicketCategory, Long> {
+@Repository
+public interface TicketCategoryRepository extends CrudRepository<TicketCategory, Long> {
+    TicketCategory getTicketCategoryByTicketCategoryId(Long ticketCategoryId);
 }

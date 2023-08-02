@@ -3,70 +3,51 @@ package com.example.practica.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 @Entity
-@Table(name = "Orders")
-public class Order {
+@Table(name = "orders")
+public class Order implements Serializable {
+
     @Id
-    @Column(name = "OrderID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderID;
-    @ManyToOne
-    @JoinColumn(name = "CustomerID")
+    private Long orderId;
 
-    private Customer customerID;
-    @Column(name = "ticketCategoryID")
+    @Column(name = "ordered_at")
+    private LocalDateTime orderedAt;
 
-    private Long ticketCategoryID;
-    @Column(name = "orderAt")
-
-    private String orderAt;
-    @Column(name = "numberOfTickets")
+    @Column(name = "number_of_tickets")
     private int numberOfTickets;
-    @Column(name = "totalPrice")
-    private int totalPrice;
 
-    public Order() {
+    @Column(name="total_price")
+    private Float totalPrice;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "ticket_category_id")
+    private TicketCategory ticketCategory;
+
+    public void Orders() {
     }
 
-    public Order(Long orderID, Customer customerID, Long ticketCategoryID, String orderAt, int numberOfTickets, int totalPrice) {
-        this.orderID = orderID;
-        this.customerID = customerID;
-        this.ticketCategoryID = ticketCategoryID;
-        this.orderAt = orderAt;
-        this.numberOfTickets = numberOfTickets;
-        this.totalPrice = totalPrice;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public Long getOrderID() {
-        return orderID;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public void setOrderID(Long orderID) {
-        this.orderID = orderID;
+    public LocalDateTime getOrderedAt() {
+        return orderedAt;
     }
 
-    public Customer getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(Customer customerID) {
-        this.customerID = customerID;
-    }
-
-    public Long getTicketCategoryID() {
-        return ticketCategoryID;
-    }
-
-    public void setTicketCategoryID(Long ticketCategoryID) {
-        this.ticketCategoryID = ticketCategoryID;
-    }
-
-    public String getOrderAt() {
-        return orderAt;
-    }
-
-    public void setOrderAt(String orderAt) {
-        this.orderAt = orderAt;
+    public void setOrderedAt(LocalDateTime orderedAt) {
+        this.orderedAt = orderedAt;
     }
 
     public int getNumberOfTickets() {
@@ -77,11 +58,39 @@ public class Order {
         this.numberOfTickets = numberOfTickets;
     }
 
-    public int getTotalPrice() {
+    public Float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public TicketCategory getTicketCategory() {
+        return ticketCategory;
+    }
+
+    public void setTicketCategory(TicketCategory ticketCategory) {
+        this.ticketCategory = ticketCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderId=" + orderId +
+                ", orderedAt=" + orderedAt +
+                ", numberOfTickets=" + numberOfTickets +
+                ", totalPrice=" + totalPrice +
+                ", customer=" + customer +
+                ", ticketCategory=" + ticketCategory +
+                '}';
     }
 }
