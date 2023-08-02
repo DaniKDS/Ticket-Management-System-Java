@@ -1,63 +1,70 @@
 package com.example.practica.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Event")
+@Table(name="events")
 public class Event implements Serializable {
+
     @Id
-    @Column(name = "eventiD")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long eventid;
-    @ManyToOne
-    @JoinColumn(name = "venueID")
-    private Venue venueId;
-    @ManyToOne
-    @JoinColumn(name = "eventTypeID")
-    private EventType eventType;
-    @Column(name = "eventName")
+    private Long eventId;
+
+    @Column(name="event_name")
     private String eventName;
-    @Column(name = "startDate")
-    private String startDate;
-    @Column(name = "endDate")
-    private String endDate;
+
+    @Column(name = "event_description")
+    private String eventDescription;
+
+    @Column(name="event_start_date")
+    private Date eventStartDate;
+
+    @Column(name="event_end_date")
+    private Date eventEndDate;
+
+    @ManyToOne()
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
+
+    @ManyToOne()
+    @JoinColumn(name="event_type_id")
+    private EventType eventType;
+
+    @JsonIgnoreProperties("eventId")
+    @OneToMany(mappedBy = "eventId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TicketCategory> ticketCategory;
+
     public Event() {
     }
 
-public Event(Long eventid, Venue venueId, EventType eventlypeId, String eventName, String startDate, String endDate) {
-        this.eventid = eventid;
-        this.venueId = venueId;
-        this.eventType = eventlypeId;
-        this.eventName = eventName;
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public Long getEventid() {
-        return eventid;
-    }
-
-    public void setEventid(Long eventid) {
-        this.eventid = eventid;
-    }
-
-    public Venue getVenueId() {
-        return venueId;
-    }
-
-    public void setVenueId(Venue venueId) {
-        this.venueId = venueId;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(EventType eventlypeId) {
-        this.eventType = eventlypeId;
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
+    }
+
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
     }
 
     public String getEventName() {
@@ -68,19 +75,49 @@ public Event(Long eventid, Venue venueId, EventType eventlypeId, String eventNam
         this.eventName = eventName;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getEventDescription() {
+        return eventDescription;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public Date getEventStartDate() {
+        return eventStartDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEventStartDate(Date eventStartDate) {
+        this.eventStartDate = eventStartDate;
+    }
+
+    public Date getEventEndDate() {
+        return eventEndDate;
+    }
+
+    public void setEventEndDate(Date eventEndDate) {
+        this.eventEndDate = eventEndDate;
+    }
+
+    public List<TicketCategory> getTicketCategory() {
+        return ticketCategory;
+    }
+
+    public void setTicketCategory(List<TicketCategory> ticketCategory) {
+        this.ticketCategory = ticketCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId=" + eventId +
+                ", eventName='" + eventName + '\'' +
+                ", eventDescription='" + eventDescription + '\'' +
+                ", eventStartDate=" + eventStartDate +
+                ", eventEndDate=" + eventEndDate +
+                ", venue=" + venue +
+                ", eventType=" + eventType +
+                ", ticketCategory=" + ticketCategory +
+                '}';
     }
 }

@@ -5,30 +5,25 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "EventType")
+@Table(name="event_type")
 public class EventType implements Serializable {
 
     @Id
-    @Column(name = "eventTypeID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long eventTypeID;
-    @Column(name = "eventTypeName")
+    private Long eventTypeId;
+
+    @Column(name = "event_type_name")
     private String eventTypeName;
 
     public EventType() {
     }
 
-    public EventType(Long eventTypeID, String eventTypeName) {
-        this.eventTypeID = eventTypeID;
-        this.eventTypeName = eventTypeName;
-    }
-
     public Long getEventTypeId() {
-        return eventTypeID;
+        return eventTypeId;
     }
 
     public void setEventTypeId(Long eventTypeId) {
-        this.eventTypeID = eventTypeId;
+        this.eventTypeId = eventTypeId;
     }
 
     public String getEventTypeName() {
@@ -39,5 +34,11 @@ public class EventType implements Serializable {
         this.eventTypeName = eventTypeName;
     }
 
-
+    @Override
+    public String toString() {
+        return "EventType{" +
+                "eventTypeId=" + eventTypeId +
+                ", eventTypeName='" + eventTypeName + '\'' +
+                '}';
+    }
 }
