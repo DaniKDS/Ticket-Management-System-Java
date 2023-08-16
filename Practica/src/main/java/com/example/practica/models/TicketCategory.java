@@ -1,68 +1,71 @@
 package com.example.practica.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "TicketCategory")
+@Table(name="ticket_category")
 public class TicketCategory implements Serializable {
 
     @Id
-    @Column(name = "ticketCategoryID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ticketCategoryID;
+    private Long ticketCategoryId;
 
-    @ManyToOne
-    @JoinColumn(name = "eventID")
-    private Event eventID;
-    @Column(name = "description")
-    private String description;
+    @Column(name = "ticket_category_description")
+    private String ticketCategoryDescription;
+
     @Column(name = "price")
-    private int price;
+    private Float price;
+
+    @JsonIgnoreProperties("ticketCategory")
+    @ManyToOne()
+    @JoinColumn(name="event_id")
+    private Event eventId;
 
     public TicketCategory() {
     }
 
-    public TicketCategory(Long ticketCategoryID, Event eventID, String description, int price) {
-        this.ticketCategoryID = ticketCategoryID;
-        this.eventID = eventID;
-        this.description = description;
-        this.price = price;
+    public Long getTicketCategoryId() {
+        return ticketCategoryId;
     }
 
-    public Long getTicketCategoryID() {
-        return ticketCategoryID;
+    public void setTicketCategoryId(Long ticketCategoryId) {
+        this.ticketCategoryId = ticketCategoryId;
     }
 
-    public void setTicketCategoryID(Long ticketCategoryID) {
-        this.ticketCategoryID = ticketCategoryID;
+    public String getTicketCategoryDescription() {
+        return ticketCategoryDescription;
     }
 
-    public Event getEventID() {
-        return eventID;
+    public void setTicketCategoryDescription(String ticketCategoryDescription) {
+        this.ticketCategoryDescription = ticketCategoryDescription;
     }
 
-    public void setEventID(Event eventID) {
-        this.eventID = eventID;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-     public int getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
+    public Event getEventId() {
+        return eventId;
+    }
 
+    public void setEventId(Event event) {
+        this.eventId = event;
+    }
 
+    @Override
+    public String toString() {
+        return "TicketCategory{" +
+                "ticketCategoryId=" + ticketCategoryId +
+                ", ticketCategoryDescription='" + ticketCategoryDescription + '\'' +
+                ", price=" + price +
+                ", eventId=" + eventId +
+                '}';
+    }
 }

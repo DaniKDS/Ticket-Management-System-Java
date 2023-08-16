@@ -5,52 +5,47 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Venue")
+@Table(name="venue")
 public class Venue implements Serializable {
 
     @Id
-    @Column(name = "venueID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long venueID;
-    @Column(name = "location")
-    private String location;
-    @Column(name = "type")
-    private String type;
-    @Column(name = "capacity")
+    private Long venueId;
+
+    @Column(name="venue_location")
+    private String venueLocation;
+
+    @Column(name="venue_type")
+    private String venueType;
+
+    @Column(name="capacity")
     private int capacity;
 
     public Venue() {
     }
 
-    public Venue(Long venueID, String location, String type, int capacity) {
-        this.venueID = venueID;
-        this.location = location;
-        this.type = type;
-        this.capacity = capacity;
+    public Long getVenueId() {
+        return venueId;
     }
 
-    public Long getVenueID() {
-        return venueID;
+    public void setVenueId(Long venueId) {
+        this.venueId = venueId;
     }
 
-    public void setVenueID(Long venueID) {
-        this.venueID = venueID;
+    public String getVenueLocation() {
+        return venueLocation;
     }
 
-    public String getLocation() {
-        return location;
+    public void setVenueLocation(String venueLocation) {
+        this.venueLocation = venueLocation;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getVenueType() {
+        return venueType;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setVenueType(String venueType) {
+        this.venueType = venueType;
     }
 
     public int getCapacity() {
@@ -61,6 +56,13 @@ public class Venue implements Serializable {
         this.capacity = capacity;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Venue{" +
+                "venueId=" + venueId +
+                ", venueLocation='" + venueLocation + '\'' +
+                ", venueType='" + venueType + '\'' +
+                ", capacity=" + capacity +
+                '}';
+    }
 }
