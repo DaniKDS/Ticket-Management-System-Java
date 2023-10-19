@@ -1,18 +1,16 @@
 # en-summer-apprentice-java
 
-[![Build Status](https://img.shields.io/travis/<username>/<nume_proiect>.svg)](https://travis-ci.org/<username>/<nume_proiect>)
+[![Build Status](https://img.shields.io/travis/<username>/<project_name>.svg)](https://travis-ci.org/<username>/<project_name>)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![Spring Boot](https://img.shields.io/badge/spring%20boot-2.5.2-green.svg)](https://spring.io/projects/spring-boot)
 [![SQL Server](https://img.shields.io/badge/sql%20server-2019-blue.svg)](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
-> Un proiect realizat cu Spring Boot, care are ca scop lucrul cu Spring Boot, conectarea la o bază de date SQL Server și rezolvarea diferitor cerințe.
+> A project created with Spring Boot, aiming to work with Spring Boot, connect to a SQL Server database, and solve various requirements.
 
-## Descriere
-Proiect creat cu Spring Boot pentru a demonstra implementarea și utilizarea funcționalităților avansate ale framework-ului Spring. Scopul acestui proiect este să ofere o bază solidă pentru dezvoltarea aplicațiilor Java cu accent pe eficiență și performanță.
+## Description
+A project created with Spring Boot to demonstrate the implementation and usage of advanced features of the Spring framework. The purpose of this project is to provide a solid foundation for Java applications development with an emphasis on efficiency and performance.
 
-## Caracteristici cheie
-- Utilizează Spring Boot pentru gestionarea configurării și a dependențelor.
-- Conectarea la o bază de date SQL Server pentru gestionarea datelor.
-- Implementează diferite cerințe pentru a demonstra capacitatea proiectului de a rezolva provocări diverse.
-
-
+## Key Features
+- Utilizes Spring Boot for configuration and dependency management.
+- Connects to a SQL Server database for data management.
+- Implements various requirements to demonstrate the project's ability to solve diverse challenges.
