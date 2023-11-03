@@ -1,4 +1,4 @@
-# en-summer-apprentice-java
+# Ticket-Management-System-Java
 
 [![Build Status](https://img.shields.io/travis/<username>/<project_name>.svg)](https://travis-ci.org/<username>/<project_name>)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
